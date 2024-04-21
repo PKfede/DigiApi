@@ -17,7 +17,7 @@ export const createCard = async (cardProperties: Card
 
 export const listCards = async () => {
     try {
-        const list = await Card.findAll()
+        const list = await Card.findAll({ nest: true, raw: true, plain: true })
         console.log(list)
         return list
     } catch (error) {
@@ -32,6 +32,14 @@ export const updateCard = async (cardProperties: Card, id: number) => {
         const cardInfo = await Card.findByPk(id, { nest: true, raw: true, plain: true })
         console.log(cardInfo?.color)
         return update
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const deleteCard = async (id: number) => {
+    try {
+        return await Card.destroy({ where: { id } })
     } catch (error) {
         console.error(error)
     }

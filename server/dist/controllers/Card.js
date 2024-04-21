@@ -31,3 +31,9 @@ exports.CardRouter.put("/update/:id", (req, res) => __awaiter(void 0, void 0, vo
     res.statusCode = 200;
     res.send(update);
 }));
+exports.CardRouter.delete("/delete/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const cardDeleted = yield (0, CardServices_1.deleteCard)(Number(id));
+    res.statusCode = 200;
+    res.send(cardDeleted);
+}));

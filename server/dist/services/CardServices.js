@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateCard = exports.listCards = exports.createCard = void 0;
+exports.deleteCard = exports.updateCard = exports.listCards = exports.createCard = void 0;
 const Card_1 = require("../models/Card");
 const createCard = (cardProperties) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -28,7 +28,7 @@ const createCard = (cardProperties) => __awaiter(void 0, void 0, void 0, functio
 exports.createCard = createCard;
 const listCards = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const list = yield Card_1.Card.findAll();
+        const list = yield Card_1.Card.findAll({ nest: true, raw: true, plain: true });
         console.log(list);
         return list;
     }
@@ -49,3 +49,12 @@ const updateCard = (cardProperties, id) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.updateCard = updateCard;
+const deleteCard = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        return yield Card_1.Card.destroy({ where: { id } });
+    }
+    catch (error) {
+        console.error(error);
+    }
+});
+exports.deleteCard = deleteCard;
