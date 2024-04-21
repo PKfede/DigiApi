@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "karma start",
-    "dev": "concurrently \"tsc --watch \" \" nodemon dist/server.js \" ",
-    "build": "webpack -p"
+    "build:w": "tsc -w",
+    "start": "nodemon ./build/server.js",
+    "dev": "concurrently  \"npm:build:w\" \"npm:start\""
   },
   "keywords": [],
   "author": "",

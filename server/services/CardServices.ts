@@ -14,3 +14,12 @@ export const createCard = async (cardProperties: Card
         console.error(error)
     }
 }
+
+export const listCards = async () => {
+    try {
+        const list = await Card.findAll()
+        return list
+    } catch (error) {
+        console.error(error)
+    }
+}

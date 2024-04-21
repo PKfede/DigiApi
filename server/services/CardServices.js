@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createCard = void 0;
+exports.listCards = exports.createCard = void 0;
 const Card_1 = require("../db/models/Card");
 const createCard = (cardProperties) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -26,3 +26,13 @@ const createCard = (cardProperties) => __awaiter(void 0, void 0, void 0, functio
     }
 });
 exports.createCard = createCard;
+const listCards = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const list = yield Card_1.Card.findAll();
+        return list;
+    }
+    catch (error) {
+        console.error(error);
+    }
+});
+exports.listCards = listCards;

@@ -19,3 +19,8 @@ exports.CardRouter.post("/create", (req, res) => __awaiter(void 0, void 0, void 
     res.statusCode = 201;
     res.send(cardCreated);
 }));
+exports.CardRouter.get("/list", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const list = yield (0, CardServices_1.listCards)();
+    res.statusCode = 200;
+    res.send(list);
+}));
