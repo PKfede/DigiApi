@@ -1,4 +1,4 @@
-import { Card } from "../db/models/Card";
+import { Card } from "../models/Card";
 
 export const createCard = async (cardProperties: Card
 ) => {
@@ -18,7 +18,20 @@ export const createCard = async (cardProperties: Card
 export const listCards = async () => {
     try {
         const list = await Card.findAll()
+        console.log(list)
         return list
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const updateCard = async (cardProperties: Card, id: number) => {
+    try {
+
+        const update = await Card.update({ ...cardProperties }, { where: { id } })
+        const cardInfo = await Card.findByPk(id, { nest: true, raw: true, plain: true })
+        console.log(cardInfo?.color)
+        return update
     } catch (error) {
         console.error(error)
     }

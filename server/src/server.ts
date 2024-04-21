@@ -1,6 +1,6 @@
 import dotenv from "dotenv"
-import { initSequelize } from "../db/models/index"
-import { CardRouter } from "../controllers/Card"
+import { initSequelize } from "./models/index"
+import { CardRouter } from "./controllers/Card"
 
 dotenv.config()
 
@@ -13,7 +13,6 @@ const db_name = <string>process.env.DB_NAME
 const db_username = <string>process.env.DB_USERNAME
 const db_password = <string>process.env.DB_PASSWORD
 const db_host = <string>process.env.DB_HOST
-
 
 app.listen(PORT, () => {
     try {

@@ -15,12 +15,19 @@ const CardServices_1 = require("../services/CardServices");
 exports.CardRouter = (0, express_1.Router)();
 exports.CardRouter.post("/create", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const cardProperties = req.body;
-    const cardCreated = yield (0, CardServices_1.createCard)(cardProperties);
+    const cardInfo = yield (0, CardServices_1.createCard)(cardProperties);
     res.statusCode = 201;
-    res.send(cardCreated);
+    res.send(cardInfo);
 }));
 exports.CardRouter.get("/list", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const list = yield (0, CardServices_1.listCards)();
     res.statusCode = 200;
     res.send(list);
+}));
+exports.CardRouter.put("/update/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const cardInfo = req.body;
+    const update = yield (0, CardServices_1.updateCard)(cardInfo, Number(id));
+    res.statusCode = 200;
+    res.send(update);
 }));
