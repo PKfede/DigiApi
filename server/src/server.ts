@@ -8,6 +8,7 @@ const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 3000
 const bp = require('body-parser')
+const cors = require("cors")
 
 const db_name = <string>process.env.DB_NAME
 const db_username = <string>process.env.DB_USERNAME
@@ -26,6 +27,7 @@ app.listen(PORT, () => {
 
 })
 
+app.use(cors())
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
