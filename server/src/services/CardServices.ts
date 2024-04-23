@@ -16,8 +16,17 @@ export const createCard = async (cardProperties: Card
 
 export const listCards = async (where: any, limit: any, offset: any) => {
     try {
+
+        const object = {
+            where
+        }
+
+        if (where) {
+            object.where = JSON.parse(object.where)
+        }
+
         const list = await Card.findAll({
-            ...where,
+            where: object.where,
             limit,
             offset,
             nest: true,

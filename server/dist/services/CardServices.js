@@ -27,8 +27,19 @@ const createCard = (cardProperties) => __awaiter(void 0, void 0, void 0, functio
 exports.createCard = createCard;
 const listCards = (where, limit, offset) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const list = yield Card_1.Card.findAll(Object.assign(Object.assign({}, where), { limit,
-            offset, nest: true, raw: true }));
+        const object = {
+            where
+        };
+        if (where) {
+            object.where = JSON.parse(object.where);
+        }
+        const list = yield Card_1.Card.findAll({
+            where: object.where,
+            limit,
+            offset,
+            nest: true,
+            raw: true
+        });
         return list;
     }
     catch (error) {
