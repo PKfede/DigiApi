@@ -20,7 +20,11 @@ exports.CardRouter.post("/create", (req, res) => __awaiter(void 0, void 0, void 
     res.send(cardInfo);
 }));
 exports.CardRouter.get("/list", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const list = yield (0, CardServices_1.listCards)();
+    const where = req.query.where;
+    const limit = req.query.limit;
+    const offset = req.query.offset;
+    console.log(where, limit, offset);
+    const list = yield (0, CardServices_1.listCards)(where, limit, offset);
     res.statusCode = 200;
     res.send(list);
 }));

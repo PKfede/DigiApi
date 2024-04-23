@@ -14,8 +14,6 @@ root.render(
     <Fragment>
       <div className='container'>
         <App/>
-        <ListCards/>
-
       </div>
     </Fragment>
   </React.StrictMode>

@@ -13,7 +13,6 @@ exports.deleteCard = exports.updateCard = exports.listCards = exports.createCard
 const Card_1 = require("../models/Card");
 const createCard = (cardProperties) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log(cardProperties.name);
         // name: string, card_type: string, color: string, digivolve_requirement: object,
         //     level: number, dP: number, type: string, attribute: string, stage_Level: string, rarity: string, artist: string,
         //         card_Number: string, effect: string, inherited_Effect: string, source: string, notes: string, image: string
@@ -26,10 +25,10 @@ const createCard = (cardProperties) => __awaiter(void 0, void 0, void 0, functio
     }
 });
 exports.createCard = createCard;
-const listCards = () => __awaiter(void 0, void 0, void 0, function* () {
+const listCards = (where, limit, offset) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const list = yield Card_1.Card.findAll({ nest: true, raw: true, plain: true });
-        console.log(list);
+        const list = yield Card_1.Card.findAll(Object.assign(Object.assign({}, where), { limit,
+            offset, nest: true, raw: true }));
         return list;
     }
     catch (error) {
@@ -40,7 +39,7 @@ exports.listCards = listCards;
 const updateCard = (cardProperties, id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const update = yield Card_1.Card.update(Object.assign({}, cardProperties), { where: { id } });
-        const cardInfo = yield Card_1.Card.findByPk(id, { nest: true, raw: true, plain: true });
+        const cardInfo = yield Card_1.Card.findByPk(id, { nest: true, raw: true });
         console.log(cardInfo === null || cardInfo === void 0 ? void 0 : cardInfo.color);
         return update;
     }

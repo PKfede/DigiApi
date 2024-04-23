@@ -44,10 +44,10 @@ export const initCardModel = (sequelize: Sequelize) => {
             rarity: { type: DataTypes.STRING },
             artist: { type: DataTypes.STRING },
             card_Number: { type: DataTypes.STRING },
-            effect: { type: DataTypes.STRING },
-            inherited_Effect: { type: DataTypes.STRING },
+            effect: { type: DataTypes.STRING(500) },
+            inherited_Effect: { type: DataTypes.STRING(500) },
             source: { type: DataTypes.STRING },
-            notes: { type: DataTypes.STRING },
+            notes: { type: DataTypes.STRING(500) },
             image: { type: DataTypes.STRING }
         },
         {

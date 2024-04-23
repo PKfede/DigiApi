@@ -11,7 +11,11 @@ CardRouter.post("/create", async (req: Request, res: Response) => {
 })
 
 CardRouter.get("/list", async (req: Request, res: Response) => {
-    const list = await listCards()
+    const where = req.query.where
+    const limit = req.query.limit
+    const offset = req.query.offset
+    console.log(where, limit, offset)
+    const list = await listCards(where, limit, offset)
 
     res.statusCode = 200
     res.send(list)

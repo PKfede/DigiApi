@@ -24,10 +24,10 @@ const initCardModel = (sequelize) => {
         rarity: { type: sequelize_1.DataTypes.STRING },
         artist: { type: sequelize_1.DataTypes.STRING },
         card_Number: { type: sequelize_1.DataTypes.STRING },
-        effect: { type: sequelize_1.DataTypes.STRING },
-        inherited_Effect: { type: sequelize_1.DataTypes.STRING },
+        effect: { type: sequelize_1.DataTypes.STRING(500) },
+        inherited_Effect: { type: sequelize_1.DataTypes.STRING(500) },
         source: { type: sequelize_1.DataTypes.STRING },
-        notes: { type: sequelize_1.DataTypes.STRING },
+        notes: { type: sequelize_1.DataTypes.STRING(500) },
         image: { type: sequelize_1.DataTypes.STRING }
     }, {
         freezeTableName: true,
